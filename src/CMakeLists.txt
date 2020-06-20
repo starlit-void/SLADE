@@ -109,6 +109,7 @@ find_package(fmt CONFIG REQUIRED)
 find_package(MPG123 REQUIRED)
 include_directories(
 	${FREEIMAGE_INCLUDE_DIR}
+	${FREETYPE_INCLUDE_DIR}
 	${SFML_INCLUDE_DIR}
 	${FTGL_INCLUDE_DIR}
 	${GLEW_INCLUDE_PATH}
@@ -184,6 +185,7 @@ target_link_libraries(slade
 	${EXTERNAL_LIBRARIES}
 	${wxWidgets_LIBRARIES}
 	${FREEIMAGE_LIBRARIES}
+	${FREETYPE_LIBRARY}
 	${SFML_LIBRARY}
 	${FTGL_LIBRARIES}
 	${OPENGL_LIBRARIES}
@@ -192,7 +194,6 @@ target_link_libraries(slade
 	${LUA_LIBRARIES}
 	${MPG123_LIBRARIES}
 	fmt::fmt
-	-lstdc++fs
 )
 
 if (WX_GTK3)
@@ -223,7 +224,7 @@ else(APPLE)
 		install(FILES "${SLADE_OUTPUT_DIR}/slade.pk3"
 			DESTINATION share/slade3
 			)
-		
+
 		install(FILES "${PROJECT_SOURCE_DIR}/dist/res/logo_icon.png"
 			DESTINATION share/icons/
 			RENAME net.mancubus.SLADE.png
